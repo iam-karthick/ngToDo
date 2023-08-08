@@ -1,11 +1,12 @@
-.cards {
+:host {
+    mat-form-field {
+      width: 100%;
+    }
+  }
+  .cards {
     margin-top: 20px;
   
     mat-card + mat-card {
       margin-top: 20px;
     }
-  }
-
-  .mat-mdc-card-content:last-child{
-    padding: 0!important;
   }

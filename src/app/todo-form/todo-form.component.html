@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title><h2>Enter User Name</h2> </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="userForm" (submit)="submitUser()">
+        <mat-form-field>
+          <mat-label>TODO</mat-label>
+          <input
+            matInput
+            type="text"
+            id="userName"
+            formControlName="userName"
+            required
+          />
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-button type="submit" [disabled]="!userForm.valid" color="primary">Search</button>
+        </div>
+      </form>
+    </mat-card-content>
+</mat-card>
+
+<div class="cards" *ngIf="userDetails | async as userDetails">
+<mat-card *ngIf="userDetails[0].validUser ">
+  <mat-card-header>
+    <mat-card-title><h2>Create Todo</h2> </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="todoForm" (submit)="submitTodo()">
+      <mat-form-field>
+        <mat-label>TODO</mat-label>
+        <input
+          matInput
+          type="text"
+          id="description"
+          formControlName="description"
+          required
+        />
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="end">
+        <button mat-button type="submit" [disabled]="!todoForm.valid" color="primary">Create</button>
+    </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+</div>

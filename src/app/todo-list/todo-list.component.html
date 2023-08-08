@@ -1,0 +1,33 @@
+<div class="cards" *ngIf="userDetails | async as userDetails">
+  <mat-card *ngIf="userDetails[0].validUser">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>TODO'S ({{ uncheckedTodos | async }})</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <app-todo-control></app-todo-control>
+      <mat-list role="list" *ngFor="let todo of todos | async">
+        <mat-list-item [class.complete]="todo?.done">
+          <mat-checkbox (change)="toggleTodo(todo)" [checked]="todo.done"
+            >{{ todo?.description }}
+          </mat-checkbox>
+          <mat-chip> {{ todo?.done ? "Done" : "Inporgress" }}</mat-chip>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlign="end">
+        <button
+          mat-button
+          type="submit"
+          [disabled]="!submitTodos"
+          (click)="onSubmit()"
+          color="primary"
+        >
+          Submit
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
